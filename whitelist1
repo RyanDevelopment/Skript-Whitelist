@@ -1,0 +1,75 @@
+script options:
+	$ use permissions
+
+options:
+    logo: &b&lSTAFF &9⤞ &7
+    logonoti: &b&lSTAFF NOTIFICATION&9⤞ &7
+    noperm: &b&lSTAFF &9⤞ &7This is a STAFF only command. 
+    alogo: &5&lAMUSE &9⤞ &7
+    blogo: &5&lAMUSE
+
+command /whitelist [<text>] [<text>]:
+	permission: whitelist.command
+	permission message: {@noperm}
+	trigger:
+		if arg 1 is "on":
+			if arg 2 is set:
+				if {whitelist} is false:
+					set {whitelist} to true 
+					broadcast "{@logo}Whitelist has been enabled"
+					set {whitelistreason} to argument-2
+					loop for all online players: 
+						if loop-player doesn't have permission "punishment.whitelist":
+							kick loop-player due to "{@alogo}Whitelist has been turned &3on &7for %nl% &3%{whitelistreason}%"
+						else:
+							create bossbar titled "{@alogo}Whitelist is &3on!" and id "whitelist" for loop-player with colors purple
+
+					
+				else:
+					send "{@logo}Whitelist is already turned on."
+			else:
+				send "&cUsage: /whitelist (on/off) (reason)"	
+
+
+		if arg 1 is "add":
+			if arg 2 is set:
+				set {_p} to arg-1 parsed as player
+				if {_p} is a player:	
+					add "punishment.whitelist" to {_p}'s permissions
+					send "{@logo} %arg 2% has been added to whitelist"
+				else: 
+					send "&c{@logo}This player does not exist"
+			else: 
+				send "&cUsage: /whitelist (on/off/add/remove) (player)"
+		if arg 1 is "remove":
+			if arg 2 is set:
+				set {_p} to arg-1 parsed as player
+				if {_p} is a player:		
+					if arg 2 has permission "punishment.whitelist":
+						send "{@logo}This player already has whitelist permissions."
+				 
+					else: 
+						remove "punishment.whitelist"  to arg 2 parsed as player's permissions
+						send "{@logo} %arg 2% has been removed from whitelist"	
+				else: 
+					send "&c{@logo}This player does not exist."			
+			else: 
+				send "&cUsage: /whitelist (on/off/add/remove) (player)"				
+		if arg 1 is "off":
+			if {whitelist} is true:
+				set {whitelist} to false
+				broadcast "{@logo}Whitelist was turned off!"
+				loop all players:
+					hide bossbar "whitelist" 
+				stop
+			send "{@logo}Whitelist is already turned off."
+
+
+on join:
+	if {whitelist} is true:
+		if player doesn't have permission "punishment.whitelist":
+			kick player due to "{@logo}Whitelist is &3enabled &7for &3%{whitelistreason}%"
+			stop
+		else:
+			create bossbar titled "{@alogo}Whitelist is &3on!" and id "whitelist" for player with colors purple
+
