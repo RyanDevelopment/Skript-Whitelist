@@ -56,7 +56,7 @@ command /whitelist [<text>] [<text>]:
 					if {_p} has permission "whitelist.bypass":
 						send "{@staff} This player already has whitelist permissions."	
 					else:
-						execute console command "/manuaddp %{_p}% whitelist.bypass"
+						execute console command "/pex user %{_p}% add whitelist.bypass"
 						send "{@staff} %arg 2% has been added to whitelist"
 						add {_p} to {whitelistlist::*}
 				else: 
@@ -68,7 +68,7 @@ command /whitelist [<text>] [<text>]:
 				set {_p} to arg-2 parsed as player
 				if {_p} is a player:		
 					if {_p} has permission "punishment.whitelist":
-						execute console command "/manudelp %{_p}% whitelist.bypass"
+						execute console command "/pex user %{_p}% remove whitelist.bypass
 						send "{@staff} %arg 2% &7has been removed from whitelist"	
 						remove {_p} from {whitelistlist::*}
 					else: 
