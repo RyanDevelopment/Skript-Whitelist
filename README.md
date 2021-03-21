@@ -5,7 +5,7 @@
 ![Image of Help Menu](https://imgur.com/gallery/E5iVmtq)
 
 ###### A Bossbar indicating that Whitelist is enabled 
-![Image of Help Menu](https://imgur.com/gallery/lVtVm0j)
+<blockquote class="imgur-embed-pub" lang="en" data-id="a/lVtVm0j"  ><a href="//imgur.com/a/lVtVm0j">Whitelist On</a></blockquote><script async src="//s.imgur.com/min/embed.js" charset="utf-8"></script>
 
 
 
