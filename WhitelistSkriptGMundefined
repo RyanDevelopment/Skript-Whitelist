@@ -1,17 +1,20 @@
-#This version of the skript is specificly made to be used with Group Manager. This download has no options defined so the skript will NOT work without filling out line 8 - 14
-
+#This version of the skript is specificly made to be used with Group Manager. This download has no options defined so the skript will NOT work without filling out line 7 - 17
+#dependencies
+#Skript
+#SkRayFall
+#GroupManager
 
 options:
 	#staff logo 
-    staff: &b&lSTAFF &9⤞ &7
+    staff:
 	#no permission message
-    noperm: {&b&lSTAFF &9⤞} &7This is a STAFF only command.
+    noperm: 
 	#server logo 
-    slogo: &5&lAMUSE &9⤞ &7
+    slogo: 
 	#bossbar color - options are blue, green, pink, purple, red, white or yellow
-    bb: blue
+    bb: 
 	#how full the bossbar is (0 = empty 100 = full)
-    bbprogress: 100
+    bbprogress: 
 
 #Permissions
 #whitelist.command
