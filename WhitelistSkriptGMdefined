@@ -99,3 +99,4 @@ on join:
 		else:
 			create bossbar titled "{@slogo} hitelist is &3on!" and id "whitelist" for player with colors {@bb}
 			set bossbar "whitelist" value to {@bbprogress}
+
