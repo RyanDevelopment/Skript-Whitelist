@@ -40,7 +40,7 @@ command /whitelist [<text>] [<text>]:
 					broadcast "{@staff} Whitelist has been enabled"
 					set {whitelistreason} to argument-2 
 					loop all players: 
-						if loop-player doesn't have permission "punishment.whitelist":
+						if loop-player doesn't have permission "whitelist.bypass":
 							kick loop-player due to "{@slogo} Whitelist has been turned &3on &7for %nl% &3%{whitelistreason}%"
 						else:
 							create bossbar titled "{@slogo} Whitelist is &3on!" and id "whitelist" for loop-player with colors {@bb} 
