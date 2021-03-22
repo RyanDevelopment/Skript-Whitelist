@@ -48,7 +48,16 @@ command /whitelist [<text>] [<text>]:
 				else:
 					send "{@staff} Whitelist is already turned on."
 			else:
-				send "&c/whitelist help"	
+				send "&c/whitelist help"
+		if arg 1 is "off":
+			if {whitelist} is true:
+				set {whitelist} to false
+				broadcast "{@staff} Whitelist was turned off!"
+				loop all players:
+					hide bossbar "whitelist" 
+				stop
+			else:
+				send "{@staff} Whitelist is already turned off."
 		if arg 1 is "add":
 			if arg 2 is set:
 				set {_p} to arg-2 parsed as player
@@ -68,7 +77,7 @@ command /whitelist [<text>] [<text>]:
 				set {_p} to arg-2 parsed as player
 				if {_p} is a player:		
 					if {_p} has permission "punishment.whitelist":
-						execute console command "/pex user %{_p}% remove whitelist.bypass
+						execute console command "/pex user %{_p}% remove whitelist.bypass"
 						send "{@staff} %arg 2% &7has been removed from whitelist"	
 						remove {_p} from {whitelistlist::*}
 					else: 
@@ -77,21 +86,15 @@ command /whitelist [<text>] [<text>]:
 					send "&c{@staff} This player does not exist or is not online."			
 			else: 
 				send "&c/whitelist help"				
-		if arg 1 is "off":
-			if {whitelist} is true:
-				set {whitelist} to false
-				broadcast "{@staff} Whitelist was turned off!"
-				loop all players:
-					hide bossbar "whitelist" 
-				stop
-			send "{@staff} Whitelist is already turned off."
-		if arg 1 is not set:
-			send "&c/whitelist help"	
 		if arg 1 is "list":
 			if {whitelistlist::*} is set:
 				send "{@staff} %{whitelistlist::*}%"
 			else:
-				send "{@staff} Nobody is whitelisted"
+				send "{@staff} Nobody is whitelisted"		
+		
+		if arg 1 is not set:
+			send "&c/whitelist help"	
+		
 on join:
 	if {whitelist} is true:
 		if player doesn't have permission "whitelist.bypass":
