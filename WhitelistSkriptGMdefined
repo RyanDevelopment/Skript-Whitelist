@@ -76,7 +76,7 @@ command /whitelist [<text>] [<text>]:
 			if arg 2 is set:
 				set {_p} to arg-2 parsed as player
 				if {_p} is a player:		
-					if {_p} has permission "punishment.whitelist":
+					if {_p} has permission "whitelist.bypass":
 						execute console command "/manudelp %{_p}% whitelist.bypass"
 						send "{@staff} %arg 2% &7has been removed from whitelist"	
 						remove {_p} from {whitelistlist::*}
