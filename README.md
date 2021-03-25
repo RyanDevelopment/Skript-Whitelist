@@ -7,6 +7,9 @@ https://imgur.com/gallery/E5iVmtq
 ###### A Bossbar indicating that Whitelist is enabled 
 https://imgur.com/a/lVtVm0j
 
+###### The ability to add and remove players from whitelist using both Group Manager and PEX
+
+###### TONS of customizable settings to choose from
 
 
 
