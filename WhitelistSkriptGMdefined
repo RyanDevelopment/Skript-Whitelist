@@ -41,35 +41,35 @@ command /whitelist [<text>] [<text>]:
 					set {whitelistreason} to argument-2 
 					loop all players: 
 						if loop-player doesn't have permission "whitelist.bypass":
-							kick loop-player due to "{@slogo} Whitelist has been turned &3on &7for %nl% &3%{whitelistreason}%"
+							kick loop-player due to "{@slogo}{@textcolor} Whitelist has been turned &3on &7for %nl% {@accentcolor}%{whitelistreason}%"
 						else:
-							create bossbar titled "{@slogo} Whitelist is &3on!" and id "whitelist" for loop-player with colors {@bb} 
+							create bossbar titled "{@slogo}{@textcolor} Whitelist is {accentcolor}on!" and id "whitelist" for loop-player with colors {@bb} 
 							set bossbar "whitelist" value to {@bbprogress}
 				else:
-					send "{@staff} Whitelist is already turned on."
+					send "{@staff} {@textcolor}Whitelist is already turned {@accentcolor}on.{@textcolor}"
 			else:
 				send "&c/whitelist help"
 		if arg 1 is "off":
 			if {whitelist} is true:
 				set {whitelist} to false
-				broadcast "{@staff} Whitelist was turned off!"
+				broadcast "{@staff}{@textcolor} Whitelist was turned {@accentcolor}off{@textcolor}!"
 				loop all players:
 					hide bossbar "whitelist" 
 				stop
 			else:
-				send "{@staff} Whitelist is already turned off."
+				send "{@staff}{@textcolor} Whitelist is already turned {@accentcolor}off{@textcolor}."
 		if arg 1 is "add":
 			if arg 2 is set:
 				set {_p} to arg-2 parsed as player
 				if {_p} is a player:
 					if {_p} has permission "whitelist.bypass":
-						send "{@staff} This player already has whitelist permissions."	
+						send "{@staff}{@textcolor}This player already has whitelist permissions."	
 					else:
-						execute console command "/manuaddp %{_p}% whitelist.bypass"
-						send "{@staff} %arg 2% has been added to whitelist"
+						execute console command "/pex user %{_p}% add whitelist.bypass"
+						send "{@staff}[@accentcolor} %arg 2% {@textcolor}has been added to whitelist"
 						add {_p} to {whitelistlist::*}
 				else: 
-					send "&c{@staff} This player does not exist or is not online"
+					send "&c{@staff} {@textcolor}This player does not exist or is not online"
 			else: 
 				send "&c/whitelist help"
 		if arg 1 is "remove":
@@ -77,7 +77,7 @@ command /whitelist [<text>] [<text>]:
 				set {_p} to arg-2 parsed as player
 				if {_p} is a player:		
 					if {_p} has permission "whitelist.bypass":
-						execute console command "/manudelp %{_p}% whitelist.bypass"
+						execute console command "/manuaddp %{_p}% whitelist.bypass"
 						send "{@staff} %arg 2% &7has been removed from whitelist"	
 						remove {_p} from {whitelistlist::*}
 					else: 
@@ -98,8 +98,8 @@ command /whitelist [<text>] [<text>]:
 on join:
 	if {whitelist} is true:
 		if player doesn't have permission "whitelist.bypass":
-			kick player due to "{@slogo} Whitelist is &3enabled &7for &3%{whitelistreason}%"
+			kick player due to "{@slogo}{@textcolor} Whitelist is {@accentcolor}enabled {@textcolor}for {@accentcolor}%{whitelistreason}%"
 			stop
 		else:
-			create bossbar titled "{@slogo} hitelist is &3on!" and id "whitelist" for player with colors {@bb}
+			create bossbar titled "{@slogo} {@textcolor}Whitelist is {@accentcolor}on{@textcolor}!" and id "whitelist" for player with colors {@bb}
 			set bossbar "whitelist" value to {@bbprogress}
