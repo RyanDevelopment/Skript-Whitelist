@@ -17,10 +17,10 @@ options:
 	#how full the bossbar is (0 = empty 100 = full)
     bbprogress: 100
     	#color of main text
-    textcolor:
+    textcolor: &7
     	#a color that is used for times/reasons/ect
 	#should stand out from text color
-    accentcolor: 
+    accentcolor: &4
 #Permissions
 #whitelist.command
 #whitelist.bypass
